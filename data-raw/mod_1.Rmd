@@ -17,23 +17,23 @@ output:
 
 
 
-```{r setup, include=FALSE}
-# knitr::opts_chunk$set(
-# 	echo = FALSE,
-# 	message = FALSE,
-# 	warning = FALSE
-#)
-knitr::opts_chunk$set(warning = FALSE, message = FALSE, 
-                      fig.width = 35.5, fig.height = 25, 
-                      comment = NA, rows.print = 16)
+<!-- ```{r setup, include=FALSE} -->
+<!-- # knitr::opts_chunk$set( -->
+<!-- # 	echo = FALSE, -->
+<!-- # 	message = FALSE, -->
+<!-- # 	warning = FALSE -->
+<!-- #) -->
+<!-- knitr::opts_chunk$set(warning = FALSE, message = FALSE,  -->
+<!--                       fig.width = 35.5, fig.height = 25,  -->
+<!--                       comment = NA, rows.print = 16) -->
 
 
-#pagedown::chrome_print('00xarigan/02apresentacao.html')
-```
+<!-- #pagedown::chrome_print('00xarigan/02apresentacao.html') -->
+<!-- ``` -->
 
 
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 35.5, fig.height = 25}
 library(tidyverse)
 library(extrafont)
 
@@ -47,7 +47,8 @@ df_mun %>%
   scale_y_continuous(n.breaks = 10)+
   scale_fill_manual(values = c('#58D68D', '#58D68D'))+
   theme(text = element_text(family="Times New Roman", color="black",
-                            size=30, face="bold"), legend.position = 'none')+
+                            size=30, face="bold"), 
+        legend.position = 'none', panel.grid = element_blank())+
   labs(subtitle = '',
        x = '', y = '',
        caption = 'Observatório do Federalismo Brasileiro (OFB) \n @seplagce',

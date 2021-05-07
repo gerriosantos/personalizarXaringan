@@ -20,24 +20,6 @@ dados <- haven::read_dta('data-raw/DadosISS_bimestral.dta') %>%
   filter(Municipio %in% c('CE-Coreaú', 'CE-Sobral'))
 
 
-dados %>%
-  ggplot(aes(x = Bimestre, y = iss_pop, fill = iss)) +
-  geom_bar(stat = 'identity', position = position_dodge(),
-           color = 'white')+
-  theme_minimal()+
-  coord_flip()+
-  scale_y_continuous(n.breaks = 10)+
-  scale_fill_manual(values = c('#58D68D', '#58D68D'))+
-  theme(text = element_text(family="Times New Roman", color="black",
-                            size=16, face="bold"), legend.position = 'none',
-        panel.grid = element_blank())+
-  labs(title = ,
-       subtitle = '',
-       x = '', y = '',
-       caption = 'Observatório do Federalismo Brasileiro (OFB) \n @seplagce',
-       tag = '', fill = '') + facet_wrap(~iss)
-
-
 for(mun in unique(dados$Municipio)){
 
   df_mun <- dados %>% dplyr::filter(Municipio == mun)
@@ -50,6 +32,27 @@ for(mun in unique(dados$Municipio)){
   # pagedown::chrome_print(paste0('data-raw/', nome_html), format = 'pdf',
   #                        browser = 'C:/Users/gerri/AppData/Local/Google/Chrome/Application/chrome.exe')
 }
+
+
+dados %>%
+  ggplot(aes(x = Bimestre, y = iss_pop, fill = iss)) +
+  geom_bar(stat = 'identity', position = position_dodge(),
+           color = 'white')+
+  theme_minimal()+
+  coord_flip()+
+  scale_y_continuous(n.breaks = 10)+
+  scale_fill_manual(values = c('#58D68D', '#58D68D'))+
+  theme(text = element_text(family="", color="black",
+                            size=16, face="bold"), legend.position = 'none',
+        panel.grid = element_blank())+
+  labs(title = ,
+       subtitle = '',
+       x = '', y = '',
+       caption = 'Observatório do Federalismo Brasileiro (OFB) \n @seplagce',
+       tag = '', fill = '') + facet_wrap(~iss)
+
+
+
 
 
 
