@@ -37,8 +37,6 @@ for(mun in unique(dados$Municipio)){
   #                        browser = 'C:/Users/gerri/AppData/Local/Google/Chrome/Application/chrome.exe')
 }
 
-<<<<<<< HEAD
-=======
 
 dados %>%
   ggplot(aes(x = Bimestre, y = iss_pop, fill = iss)) +
@@ -87,4 +85,3 @@ dados %>%
 #                     output_file = nome_html)
 # }
 
->>>>>>> 5e3f5b420c61623405bda12ab2f9cc57126a17d4

@@ -50,11 +50,7 @@ xaringanExtra::use_logo(
 
 # `r nome_municipio`
 
-<<<<<<< HEAD
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 5, fig.height = 3, dpi=300}
-=======
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 7, fig.height = 5, dpi=300}
->>>>>>> 5e3f5b420c61623405bda12ab2f9cc57126a17d4
 library(tidyverse)
 library(extrafont)
 
@@ -67,13 +63,8 @@ df_mun %>%
   coord_flip()+
   scale_y_continuous(n.breaks = 10)+
   scale_fill_manual(values = c('#58D68D', '#58D68D'))+
-<<<<<<< HEAD
-  theme(#text = element_text(family="Times New Roman", color="black",
-        #                    size=30, face="bold"), 
-=======
   theme(text = element_text(family="Times New Roman", color="black",
                             size=12, face="bold"), 
->>>>>>> 5e3f5b420c61623405bda12ab2f9cc57126a17d4
         legend.position = 'none', panel.grid = element_blank())+
   labs(subtitle = '',
        x = '', y = '',
