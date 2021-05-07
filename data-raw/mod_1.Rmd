@@ -1,0 +1,69 @@
+---
+title: "Dados ISS (2020-2021)"
+subtitle: "Secretaria de Planejamento do Estado do Ceará - Seplag"
+author: "Gerrio Barbosa"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  xaringan::moon_reader:
+    css: ["default", "rutgers-fonts","rutgers"]
+    lib_dir: libs
+    nature:
+      titleSlideClass: [top, left, inverse]
+      #countdown: 60000  # coloca o tempo -- que fica vermelho quando termina
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+
+```{r setup, include=FALSE}
+# knitr::opts_chunk$set(
+# 	echo = FALSE,
+# 	message = FALSE,
+# 	warning = FALSE
+#)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, 
+                      fig.width = 35.5, fig.height = 25, 
+                      comment = NA, rows.print = 16)
+
+
+#pagedown::chrome_print('00xarigan/02apresentacao.html')
+```
+
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(extrafont)
+
+df_mun %>%
+  ggplot(aes(x = Bimestre, y = iss_pop, fill = iss)) +
+  geom_bar(stat = 'identity', position = position_dodge(),
+           color = 'white')+
+  #ggtitle(dados$Municipio)+
+  theme_minimal()+
+  coord_flip()+
+  scale_y_continuous(n.breaks = 10)+
+  scale_fill_manual(values = c('#58D68D', '#58D68D'))+
+  theme(text = element_text(family="Times New Roman", color="black",
+                            size=30, face="bold"), legend.position = 'none')+
+  labs(subtitle = '',
+       x = '', y = '',
+       caption = 'Observatório do Federalismo Brasileiro (OFB) \n @seplagce',
+       tag = '', fill = '') + facet_wrap(~iss)
+
+```
+
+
+
+
+<!-- ```{r} -->
+<!-- library(tidyverse) -->
+<!-- df_estado %>% ggplot(aes(ano, valor))+geom_line() -->
+
+
+<!-- ``` -->
+
+
+
