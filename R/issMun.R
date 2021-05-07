@@ -4,6 +4,7 @@ library(tidyverse)
 library(extrafont)
 
 
+
 dados <- haven::read_dta('data-raw/DadosISS_bimestral.dta') %>%
   mutate(Bimestre = case_when(
     Bimestre == 1 ~ '1˚ Bimestre',
@@ -36,3 +37,54 @@ for(mun in unique(dados$Municipio)){
   #                        browser = 'C:/Users/gerri/AppData/Local/Google/Chrome/Application/chrome.exe')
 }
 
+<<<<<<< HEAD
+=======
+
+dados %>%
+  ggplot(aes(x = Bimestre, y = iss_pop, fill = iss)) +
+  geom_bar(stat = 'identity', position = position_dodge(),
+           color = 'white')+
+  theme_minimal()+
+  coord_flip()+
+  # scale_y_continuous(n.breaks = 10)+
+  scale_fill_manual(values = c('#00ffbf', '#00ffbf'))+
+  theme(text = element_text(family="Times New Roman", color="black",
+                            size=16, face="bold"), legend.position = 'none',
+        panel.grid = element_blank(),
+        panel.background = element_rect(fill = "#fff9e6"),
+        panel.grid.major.y = element_line(colour = 'gray'),
+        panel.grid.major.x = element_blank(),
+        panel.)+
+  labs(title = ,
+       subtitle = '',
+       x = '', y = '',
+       caption = 'Observatório do Federalismo Brasileiro (OFB) \n @seplagce',
+       tag = '', fill = '') + facet_wrap(~iss)
+
+
+
+
+
+
+
+
+
+
+
+
+#
+# dados <- expand.grid(uf = c('CE', 'PE'), ano = seq(2010, 2021))
+#
+# dados <- dados %>% mutate(valor = rnorm(nrow(dados)))
+#
+#
+# for(estado in unique(dados$uf)){
+#
+#   df_estado <- dados %>% dplyr::filter(uf == estado)
+#   nome_html <- paste0('apresentacao_', estado, '.html')
+#
+#   rmarkdown::render('data-raw/mod_1.Rmd',
+#                     output_file = nome_html)
+# }
+
+>>>>>>> 5e3f5b420c61623405bda12ab2f9cc57126a17d4
