@@ -36,13 +36,17 @@ style_xaringan(
 library(xaringanExtra)
 
 xaringanExtra::use_logo(
-  image_url = "https://www.seplag.ce.gov.br/wp-content/uploads/sites/14/2021/04/INVERTIDA-WEB-branca.png",
-  position = xaringanExtra::css_position(top = "2em", right = "1em"),
-  width = "410px",
-  height = "428px"
+  image_url = "logo_CietistaChefe.jpeg",
+  position = xaringanExtra::css_position(top = "2em", right = "2em"),
+  width = "210px",
+  height = "128px"
 
 )
 
+```
+
+```{r xaringan-scribble, echo=FALSE}
+xaringanExtra::use_scribble()
 ```
 
 ---
@@ -50,7 +54,7 @@ xaringanExtra::use_logo(
 
 # `r nome_municipio`
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 5, fig.height = 3, dpi=300}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 7.5, fig.height = 5.5, dpi=300}
 library(tidyverse)
 library(extrafont)
 
@@ -58,14 +62,19 @@ df_mun %>%
   ggplot(aes(x = Bimestre, y = iss_pop, fill = iss)) +
   geom_bar(stat = 'identity', position = position_dodge(),
            color = 'white')+
-  #ggtitle(dados$Municipio)+
   theme_minimal()+
   coord_flip()+
-  scale_y_continuous(n.breaks = 10)+
+  scale_y_continuous(n.breaks = 5)+
   scale_fill_manual(values = c('#58D68D', '#58D68D'))+
-  theme(#text = element_text(family="Times New Roman", color="black",
-        #                    size=30, face="bold"), 
-        legend.position = 'none', panel.grid = element_blank())+
+  theme(axis.text.x = element_text(color = 'black'),
+    axis.text.y = element_text(color = 'black'),
+    panel.background = element_rect(
+    fill = 'white',
+    color = '#b3d9ff',
+    size = 2),
+    #text = element_text(family="Times New Roman", color="black",
+    #                    size=30, face="bold"), 
+    legend.position = 'none', panel.grid = element_blank())+
   labs(subtitle = '',
        x = '', y = '',
        caption = 'Observatório do Federalismo Brasileiro (OFB) \n @seplagce',
