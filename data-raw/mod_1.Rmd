@@ -17,14 +17,14 @@ output:
 ---
 
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
-nome_municipio = "Coreaú"
 
 library(xaringanthemer)
 
 style_xaringan(
-  background_color = "#488430",
-  #header_color = "#488430",
-  #header_background_color = "#488430",
+  #background_color = color_principal,
+  #header_background_color = color_principal,
+  #title_slide_background_color = color_principal,
+  #header_color = "white",
   header_font_google = google_font("Josefin Sans"),
   text_font_google   = google_font("Montserrat", "300", "300i"),
   code_font_google   = google_font("Fira Mono")
@@ -36,43 +36,21 @@ style_xaringan(
 library(xaringanExtra)
 
 xaringanExtra::use_logo(
-  image_url = "https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/xaringan.png",
-  position = xaringanExtra::css_position(top = "1em", right = "1em")
+  image_url = "https://www.seplag.ce.gov.br/wp-content/uploads/sites/14/2021/04/INVERTIDA-WEB-branca.png",
+  position = xaringanExtra::css_position(top = "2em", right = "1em"),
+  width = "410px",
+  height = "428px"
 
 )
 
 ```
 
+---
 
 
+# `r nome_municipio`
 
-# Cidade - CE
-
-
-```{r include=FALSE}
-library(tidyverse)
-library(extrafont)
-
-df_mun <- haven::read_dta('DadosISS_bimestral.dta') %>%
-  mutate(Bimestre = case_when(
-    Bimestre == 1 ~ '1˚ Bimestre',
-    Bimestre == 2 ~ '2˚ Bimestre',
-    Bimestre == 3 ~ '3˚ Bimestre',
-    Bimestre == 4 ~ '4˚ Bimestre',
-    Bimestre == 5 ~ '5˚ Bimestre',
-    Bimestre == 6 ~ '6˚ Bimestre'
-  ),
-  iss19 = round(ISS19/pop19, 2),
-  iss20 = round(ISS20/pop19, 2)) %>%
-  select(Municipio, Bimestre, 'ISS por Habitante 2019' = iss19, 'ISS por Habitante 2020' = iss20) %>%
-  pivot_longer(cols = !Municipio:Bimestre, names_to = 'iss', values_to = 'iss_pop') %>%
-  filter(Municipio %in% c('CE-Coreaú'))
-
-```
-
-
-
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 7, fig.height = 5, dpi=300}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 5, fig.height = 3, dpi=300}
 library(tidyverse)
 library(extrafont)
 
@@ -91,10 +69,10 @@ df_mun %>%
   labs(subtitle = '',
        x = '', y = '',
        caption = 'Observatório do Federalismo Brasileiro (OFB) \n @seplagce',
-       tag = '', fill = '') + facet_wrap(~iss)
+       tag = '', fill = '') + 
+  facet_wrap(~iss)
 
 ```
-
 
 
 
