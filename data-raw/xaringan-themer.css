@@ -45,7 +45,7 @@
   /* Colors */
   --text-color: #000;
   --header-color: #000;
-  --background-color: white;
+  --background-color: #488430;
   --link-color: rgb(249, 38, 114);
   --code-highlight-color: rgba(255,255,0,0.5);
   --inverse-text-color: #d6d6d6;
@@ -55,7 +55,7 @@
   --title-slide-background-color: #272822;
   --title-slide-text-color: #d6d6d6;
   --header-background-color: #000;
-  --header-background-text-color: white;
+  --header-background-text-color: #488430;
 }
 
 html {

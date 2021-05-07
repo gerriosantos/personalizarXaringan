@@ -1,5 +1,5 @@
 ---
-title: "Dados ISS (2020-2021)"
+title: "Dados ISS (2020-2021): `r nome_municipio`"
 subtitle: "Secretaria de Planejamento do Estado do Ceará - Seplag"
 author: "Gerrio Barbosa"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
@@ -13,14 +13,16 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+
 ---
 
-
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
+nome_municipio = "Coreaú"
+
 library(xaringanthemer)
 
 style_xaringan(
-  background_color = "white",
+  background_color = "#488430",
   #header_color = "#488430",
   #header_background_color = "#488430",
   header_font_google = google_font("Josefin Sans"),
@@ -29,7 +31,7 @@ style_xaringan(
 )
 ```
 
-```{r}
+```{r echo=FALSE}
 #devtools::install_github("gadenbuie/xaringanExtra")
 library(xaringanExtra)
 
@@ -41,7 +43,8 @@ xaringanExtra::use_logo(
 
 ```
 
----
+
+
 
 # Cidade - CE
 
@@ -92,15 +95,6 @@ df_mun %>%
 
 ```
 
-
-
-
-<!-- ```{r} -->
-<!-- library(tidyverse) -->
-<!-- df_estado %>% ggplot(aes(ano, valor))+geom_line() -->
-
-
-<!-- ``` -->
 
 
 

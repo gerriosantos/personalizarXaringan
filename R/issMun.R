@@ -25,6 +25,9 @@ for(mun in unique(dados$Municipio)){
   df_mun <- dados %>% dplyr::filter(Municipio == mun)
   nome_html <- paste0('apresentacao_', mun, '.html')
 
+  # adiciona o nome_municipio ao titulo do slide com title = `r nome_municipio`
+  nome_municipio = dados$Municipio[1]
+
   rmarkdown::render('data-raw/mod_1.Rmd',
                     output_file = nome_html,
                     'xaringan::moon_reader')
