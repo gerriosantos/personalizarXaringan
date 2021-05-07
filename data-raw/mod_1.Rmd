@@ -33,7 +33,7 @@ output:
 
 
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 35.5, fig.height = 25}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 7, fig.height = 5, dpi=300}
 library(tidyverse)
 library(extrafont)
 
@@ -47,7 +47,7 @@ df_mun %>%
   scale_y_continuous(n.breaks = 10)+
   scale_fill_manual(values = c('#58D68D', '#58D68D'))+
   theme(text = element_text(family="Times New Roman", color="black",
-                            size=30, face="bold"), 
+                            size=12, face="bold"), 
         legend.position = 'none', panel.grid = element_blank())+
   labs(subtitle = '',
        x = '', y = '',

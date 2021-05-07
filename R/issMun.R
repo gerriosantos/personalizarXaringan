@@ -4,6 +4,7 @@ library(tidyverse)
 library(extrafont)
 
 
+
 dados <- haven::read_dta('data-raw/DadosISS_bimestral.dta') %>%
   mutate(Bimestre = case_when(
     Bimestre == 1 ~ '1˚ Bimestre',
@@ -40,11 +41,15 @@ dados %>%
            color = 'white')+
   theme_minimal()+
   coord_flip()+
-  scale_y_continuous(n.breaks = 10)+
-  scale_fill_manual(values = c('#58D68D', '#58D68D'))+
-  theme(text = element_text(family="", color="black",
+  # scale_y_continuous(n.breaks = 10)+
+  scale_fill_manual(values = c('#00ffbf', '#00ffbf'))+
+  theme(text = element_text(family="Times New Roman", color="black",
                             size=16, face="bold"), legend.position = 'none',
-        panel.grid = element_blank())+
+        panel.grid = element_blank(),
+        panel.background = element_rect(fill = "#fff9e6"),
+        panel.grid.major.y = element_line(colour = 'gray'),
+        panel.grid.major.x = element_blank(),
+        panel.)+
   labs(title = ,
        subtitle = '',
        x = '', y = '',
@@ -62,18 +67,18 @@ dados %>%
 
 
 
-
-dados <- expand.grid(uf = c('CE', 'PE'), ano = seq(2010, 2021))
-
-dados <- dados %>% mutate(valor = rnorm(nrow(dados)))
-
-
-for(estado in unique(dados$uf)){
-
-  df_estado <- dados %>% dplyr::filter(uf == estado)
-  nome_html <- paste0('apresentacao_', estado, '.html')
-
-  rmarkdown::render('data-raw/mod_1.Rmd',
-                    output_file = nome_html)
-}
+#
+# dados <- expand.grid(uf = c('CE', 'PE'), ano = seq(2010, 2021))
+#
+# dados <- dados %>% mutate(valor = rnorm(nrow(dados)))
+#
+#
+# for(estado in unique(dados$uf)){
+#
+#   df_estado <- dados %>% dplyr::filter(uf == estado)
+#   nome_html <- paste0('apresentacao_', estado, '.html')
+#
+#   rmarkdown::render('data-raw/mod_1.Rmd',
+#                     output_file = nome_html)
+# }
 
