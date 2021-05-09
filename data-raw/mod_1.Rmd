@@ -5,8 +5,9 @@ author: "Gerrio Barbosa"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 output:
   xaringan::moon_reader:
-    css: xaringan-themer.css
     lib_dir: libs
+    #chakra: libs/remark-latest.min.js
+    css: [xaringan-themer.css]
     nature:
       titleSlideClass: [top, left, inverse]
       #countdown: 60000  # coloca o tempo -- que fica vermelho quando termina
@@ -15,46 +16,68 @@ output:
       countIncrementalSlides: false
 
 ---
+background-image: url(bs3.png)
+background-size: cover
 
-```{r xaringan-themer, include=FALSE, warning=FALSE}
+
+```{r xaringan-themer, include=FALSE, warning=FALSE, fig.width = 4.5, fig.height = 3, dpi=300}
 
 library(xaringanthemer)
 
 style_xaringan(
-  #background_color = color_principal,
-  #header_background_color = color_principal,
+  text_color = '#000',
+  header_color = 'white',
+  background_image = 'data-raw/bk2.png',
+  #header_background_color = 'blue',
+  text_slide_number_font_size = NULL,
+  #padding = '1em', '4em', '1em', '4em',
   #title_slide_background_color = color_principal,
-  #header_color = "white",
+  
   header_font_google = google_font("Josefin Sans"),
   text_font_google   = google_font("Montserrat", "300", "300i"),
   code_font_google   = google_font("Fira Mono")
 )
 ```
 
-```{r echo=FALSE}
-#devtools::install_github("gadenbuie/xaringanExtra")
-library(xaringanExtra)
+<!-- ```{r echo=FALSE} -->
+<!-- #devtools::install_github("gadenbuie/xaringanExtra") -->
+<!-- library(xaringanExtra) -->
 
-xaringanExtra::use_logo(
-  image_url = "logo_CietistaChefe.jpeg",
-  position = xaringanExtra::css_position(top = "2em", right = "2em"),
-  width = "210px",
-  height = "128px"
+<!-- xaringanExtra::use_logo( -->
+<!--   image_url = "funcap.png", -->
+<!--   position = xaringanExtra::css_position(top = "2em", right = "2em"), -->
+<!--   width = "110px", -->
+<!--   height = "88px" -->
 
-)
+<!-- ) -->
 
-```
+<!-- ``` -->
 
-```{r xaringan-scribble, echo=FALSE}
-xaringanExtra::use_scribble()
-```
+<!-- chunks do xariganExtra para pesquisa e deixar usar canetinha -->
+
+
+<!-- ```{r xaringan-scribble, echo=FALSE} -->
+<!-- xaringanExtra::use_scribble() -->
+<!-- ``` -->
+
+
+<!-- ```{r xaringanExtra-search, echo=FALSE} -->
+<!-- xaringanExtra::use_search(show_icon = TRUE, case_sensitive = FALSE,  -->
+<!--                           position = 'top-left') -->
+<!-- ``` -->
+
+<!-- ```{r xaringanExtra-search-style, echo=FALSE} -->
+<!-- xaringanExtra::style_search(match_background = "pink") -->
+<!-- ``` -->
 
 ---
 
+background-image: url(fundo1.png)
+background-size: cover
 
 # `r nome_municipio`
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 7.5, fig.height = 5.5, dpi=300}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 8, fig.height = 4, dpi=300}
 library(tidyverse)
 library(extrafont)
 
@@ -62,26 +85,35 @@ df_mun %>%
   ggplot(aes(x = Bimestre, y = iss_pop, fill = iss)) +
   geom_bar(stat = 'identity', position = position_dodge(),
            color = 'white')+
-  theme_minimal()+
-  coord_flip()+
+  theme_bw()+
+  #coord_flip()+
   scale_y_continuous(n.breaks = 5)+
   scale_fill_manual(values = c('#58D68D', '#58D68D'))+
   theme(axis.text.x = element_text(color = 'black'),
     axis.text.y = element_text(color = 'black'),
+    #panel.grid.major.x = element_line(),
     panel.background = element_rect(
     fill = 'white',
-    color = '#b3d9ff',
-    size = 2),
+    color = 'lightgray',
+    size = 0.5),
     #text = element_text(family="Times New Roman", color="black",
     #                    size=30, face="bold"), 
     legend.position = 'none', panel.grid = element_blank())+
   labs(subtitle = '',
        x = '', y = '',
-       caption = 'Observatório do Federalismo Brasileiro (OFB) \n @seplagce',
+      # caption = 'Observatório do Federalismo Brasileiro (OFB) \n @seplagce',
        tag = '', fill = '') + 
   facet_wrap(~iss)
 
 ```
+
+---
+background-image: url(logo_CietistaChefe.jpeg)
+background-size: cover
+
+---
+background-image: url(bs.png)
+background-size: cover
 
 
 

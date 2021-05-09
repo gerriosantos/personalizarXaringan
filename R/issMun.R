@@ -2,6 +2,7 @@
 
 library(tidyverse)
 library(extrafont)
+library(xaringanthemer)
 
 
 dados <- haven::read_dta('data-raw/DadosISS_bimestral.dta') %>%
@@ -26,7 +27,7 @@ for(mun in unique(dados$Municipio)){
   nome_html <- paste0('apresentacao_', mun, '.html')
 
   # adiciona o nome_municipio ao titulo do slide com title = `r nome_municipio`
-  nome_municipio = dados$Municipio[1]
+  nome_municipio = mun
 
   rmarkdown::render('data-raw/mod_1.Rmd',
                     output_file = nome_html,
@@ -35,4 +36,37 @@ for(mun in unique(dados$Municipio)){
   # pagedown::chrome_print(paste0('data-raw/', nome_html), format = 'pdf',
   #                        browser = 'C:/Users/gerri/AppData/Local/Google/Chrome/Application/chrome.exe')
 }
+
+
+
+
+
+
+## Fazendo com o purrr
+#
+# rend <- function(base, coluna){
+#
+#   for(mun in unique(base[[coluna]])){
+#
+#     df_mun <- base %>% dplyr::filter(coluna == mun)
+#     nome_html <- paste0('apresentacao_', mun, '.html')
+#
+#     nome_municipio = mun
+#
+#     rmarkdown::render('data-raw/mod_1.Rmd', output_file = nome_html,
+#                       'xaringan::moon_reader')
+#
+#   }
+# }
+#
+#
+#
+#
+#
+# purrr::map2_df(dados, 'Municipio', rend)
+
+
+
+
+
 
