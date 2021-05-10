@@ -2,23 +2,25 @@
 
 library(tidyverse)
 library(extrafont)
-library(xaringanthemer)
+
 
 
 dados <- haven::read_dta('data-raw/DadosISS_bimestral.dta') %>%
   mutate(Bimestre = case_when(
-    Bimestre == 1 ~ '1˚ Bimestre',
-    Bimestre == 2 ~ '2˚ Bimestre',
-    Bimestre == 3 ~ '3˚ Bimestre',
-    Bimestre == 4 ~ '4˚ Bimestre',
-    Bimestre == 5 ~ '5˚ Bimestre',
-    Bimestre == 6 ~ '6˚ Bimestre'
+    Bimestre == 1 ~ '1˚ Bim',
+    Bimestre == 2 ~ '2˚ Bim',
+    Bimestre == 3 ~ '3˚ Bim',
+    Bimestre == 4 ~ '4˚ Bim',
+    Bimestre == 5 ~ '5˚ Bim',
+    Bimestre == 6 ~ '6˚ Bim'
   ),
   iss19 = round(ISS19/pop19, 2),
-  iss20 = round(ISS20/pop19, 2)) %>%
+  iss20 = round(ISS20/pop19, 2),
+  Municipio = base::paste(substring(Municipio, 4), substr(Municipio,1,2), sep = '-')) %>%
   select(Municipio, Bimestre, 'ISS por Habitante 2019' = iss19, 'ISS por Habitante 2020' = iss20) %>%
   pivot_longer(cols = !Municipio:Bimestre, names_to = 'iss', values_to = 'iss_pop') %>%
-  filter(Municipio %in% c('CE-Coreaú', 'CE-Sobral'))
+  filter(Municipio %in% c('Coreaú-CE', 'Sobral-CE'))
+
 
 
 for(mun in unique(dados$Municipio)){

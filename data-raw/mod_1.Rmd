@@ -1,22 +1,26 @@
 ---
-title: "Dados ISS (2020-2021): `r nome_municipio`"
-subtitle: "Secretaria de Planejamento do Estado do Ceará - Seplag"
-author: "Gerrio Barbosa"
-date: "`r format(Sys.time(), '%B %d, %Y')`"
+# title: "Dados do ISS (2019-2020)"
+# subtitle: "Secretaria de Palnejamento do Estado do Ceará - Seplag"
+#author: ""
+# date: "`r format(Sys.time(), '%B %d, %Y')`"
+#encoding: "UTF-8"
 output:
   xaringan::moon_reader:
+    seal: false
     lib_dir: libs
     #chakra: libs/remark-latest.min.js
     css: [xaringan-themer.css]
     nature:
-      titleSlideClass: [top, left, inverse]
+      #titleSlideClass: [right, medium, inverse]
       #countdown: 60000  # coloca o tempo -- que fica vermelho quando termina
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+      
 
 ---
-background-image: url(bs3.png)
+
+background-image: url(bk_image.png)
 background-size: cover
 
 
@@ -27,7 +31,7 @@ library(xaringanthemer)
 style_xaringan(
   text_color = '#000',
   header_color = 'white',
-  background_image = 'data-raw/bk2.png',
+  #background_image = 'bk_image.png',
   #header_background_color = 'blue',
   text_slide_number_font_size = NULL,
   #padding = '1em', '4em', '1em', '4em',
@@ -72,7 +76,7 @@ style_xaringan(
 
 ---
 
-background-image: url(fundo1.png)
+background-image: url(template_todos_slides.png)
 background-size: cover
 
 # `r nome_municipio`
@@ -108,12 +112,12 @@ df_mun %>%
 ```
 
 ---
-background-image: url(logo_CietistaChefe.jpeg)
-background-size: cover
+<!-- background-image: url(logo_CietistaChefe.jpeg) -->
+<!-- background-size: cover -->
 
----
-background-image: url(bs.png)
-background-size: cover
+<!-- background-image: url(bs.png) -->
+<!-- background-size: cover -->
+
 
 
 
