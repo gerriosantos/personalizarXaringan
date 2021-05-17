@@ -6,23 +6,23 @@
 #encoding: "UTF-8"
 output:
   xaringan::moon_reader:
-    seal: false
+    toc: true
+    #seal: false
     lib_dir: libs
     #chakra: libs/remark-latest.min.js
     css: [xaringan-themer.css]
     nature:
+      slideNumberFormat: ""
       #titleSlideClass: [right, medium, inverse]
       #countdown: 60000  # coloca o tempo -- que fica vermelho quando termina
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
-      
 
 ---
 
 background-image: url(bk_image.png)
 background-size: cover
-
 
 ```{r xaringan-themer, include=FALSE, warning=FALSE, fig.width = 4.5, fig.height = 3, dpi=300}
 
@@ -41,6 +41,7 @@ style_xaringan(
   text_font_google   = google_font("Montserrat", "300", "300i"),
   code_font_google   = google_font("Fira Mono")
 )
+
 ```
 
 <!-- ```{r echo=FALSE} -->
@@ -74,12 +75,38 @@ style_xaringan(
 <!-- xaringanExtra::style_search(match_background = "pink") -->
 <!-- ``` -->
 
+
+```{r, echo=FALSE}
+
+dados <- haven::read_dta('DadosISS_bimestral.dta') %>%
+  dplyr::mutate(Bimestre = dplyr::case_when(
+    Bimestre == 1 ~ '1˚ Bim',
+    Bimestre == 2 ~ '2˚ Bim',
+    Bimestre == 3 ~ '3˚ Bim',
+    Bimestre == 4 ~ '4˚ Bim',
+    Bimestre == 5 ~ '5˚ Bim',
+    Bimestre == 6 ~ '6˚ Bim'
+  ),
+  iss19 = round(ISS19/pop19, 2),
+  iss20 = round(ISS20/pop19, 2),
+  Municipio = base::paste(substring(Municipio, 4), substr(Municipio,1,2), sep = '-')) %>%
+  dplyr::select(Municipio, Bimestre, 'ISS por Habitante 2019' = iss19, 'ISS por Habitante 2020' = iss20) %>%
+  tidyr::pivot_longer(cols = !Municipio:Bimestre, names_to = 'iss', values_to = 'iss_pop') %>%
+  dplyr::filter(Municipio %in% c('Coreaú-CE', 'Sobral-CE'))
+
+
+
+```
+
+
 ---
+
 
 background-image: url(template_todos_slides.png)
 background-size: cover
 
-# `r nome_municipio`
+# `r nome_municipio` 
+
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width = 8, fig.height = 4, dpi=300}
 library(tidyverse)
@@ -110,8 +137,8 @@ df_mun %>%
   facet_wrap(~iss)
 
 ```
-
 ---
+
 <!-- background-image: url(logo_CietistaChefe.jpeg) -->
 <!-- background-size: cover -->
 

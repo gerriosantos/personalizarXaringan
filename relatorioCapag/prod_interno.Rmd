@@ -1,0 +1,59 @@
+---
+title: "Dados do ISS (2019-2020)"
+subtitle: "Secretaria de Palnejamento do Estado do Ceará - Seplag"
+author: ""
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+encoding: "UTF-8"
+output:
+  xaringan::moon_reader:
+    #toc: true
+    #seal: false  ## Se false faz com que não mostre a folha de rosto (cabeçario)
+    lib_dir: libs
+    #chakra: libs/remark-latest.min.js
+    css: [xaringan-themer.css]
+    nature:
+      #slideNumberFormat: ""   # Retirar a numeracao de paginas
+      #titleSlideClass: [right, medium, inverse]
+      #countdown: 60000  # coloca o tempo -- que fica vermelho quando termina
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+params:
+  date: !r Sys.Date()
+      
+
+---
+
+
+
+```{r xaringan-themer, fig.height=3, fig.width=4.5, warning=FALSE, include=FALSE, results='hide', dpi=300}
+
+library(xaringanthemer)
+
+style_xaringan(
+  # text_color = 'blue',
+  # header_color = 'blue',  
+  background_image = 'bk_image1.png',
+  header_background_color = 'blue',
+  title_slide_background_color = ,
+  #text_slide_number_font_size = NULL,
+  #padding = '1em', '4em', '1em', '4em',
+  #title_slide_background_color = 'blue',
+  
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Fira Mono")
+)
+```
+
+---
+
+background-image: url(template_todos_slides.png)
+background-size: cover
+
+
+# O Cara
+
+## The guy
+
+

@@ -21,12 +21,14 @@ dados <- haven::read_dta('data-raw/DadosISS_bimestral.dta') %>%
   pivot_longer(cols = !Municipio:Bimestre, names_to = 'iss', values_to = 'iss_pop') %>%
   filter(Municipio %in% c('Coreaú-CE', 'Sobral-CE'))
 
+## Uma forma bruta de gerar somente um relatório para cada município.
 
 
 for(mun in unique(dados$Municipio)){
 
   df_mun <- dados %>% dplyr::filter(Municipio == mun)
   nome_html <- paste0('apresentacao_', mun, '.html')
+  #nome_rmd <- paste0('apresentacao_', mun)
 
   # adiciona o nome_municipio ao titulo do slide com title = `r nome_municipio`
   nome_municipio = mun
@@ -35,39 +37,13 @@ for(mun in unique(dados$Municipio)){
                     output_file = nome_html,
                     'xaringan::moon_reader')
   # Transformar em pdf ou png (default é pdf)
-  # pagedown::chrome_print(paste0('data-raw/', nome_html), format = 'pdf',
+  # pagedown::chrome_print(input = here::here('data-raw', nome_html),
   #                        browser = 'C:/Users/gerri/AppData/Local/Google/Chrome/Application/chrome.exe')
 }
 
-
-
-
-
-
-## Fazendo com o purrr
-#
-# rend <- function(base, coluna){
-#
-#   for(mun in unique(base[[coluna]])){
-#
-#     df_mun <- base %>% dplyr::filter(coluna == mun)
-#     nome_html <- paste0('apresentacao_', mun, '.html')
-#
-#     nome_municipio = mun
-#
-#     rmarkdown::render('data-raw/mod_1.Rmd', output_file = nome_html,
-#                       'xaringan::moon_reader')
-#
-#   }
-# }
-#
-#
-#
-#
-#
-# purrr::map2_df(dados, 'Municipio', rend)
-
-
+# Só consegue gerar em pdf uma um. Dentro do loop não gera.
+pagedown::chrome_print(input = here::here('data-raw', 'apresentacao_Sobral-CE.html'),
+                       browser = 'C:/Users/gerri/AppData/Local/Google/Chrome/Application/chrome.exe')
 
 
 

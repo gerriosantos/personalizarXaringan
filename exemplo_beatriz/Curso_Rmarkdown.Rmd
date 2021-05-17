@@ -1,0 +1,24 @@
+---
+title: "Curso de Rmarkdown"
+output:
+  html_document:
+    toc: true
+---
+
+---
+
+### **Rmarkdown: um jeito simples de escrever relatórios (ou artigos!), criar apresentações e gerenciar sites no RStudio** 
+**Local:** FURG  
+**Data**: 31 de agosto/2016  
+**Hora:** 09:00h até 12:00h  
+**Conteúdo:** RMarkdown é uma linguagem de rápido aprendizado para criar documentos em PDF ou HTML que incluam textos, figuras, gráficos, tabelas e fórmulas. É capaz de inserir no arquivo gráficos criados no R. Arquivos profissionais em PDF podem ser criados, tanto para  relatórios de estudantes como para escrever artigos científicos. A partir dos arquivos em HTML podem ser criadas apresentações portáveis e simples, porém eficientes. Um site inteiro pode ser criado usando os arquivos HTML, que pode ser gerenciado facilmente usando as ferramentas que a nova versão do RStudio traz.  
+**Público:** Aberto a qualquer pessoa.
+
+Arquivos do curso:
+
+- [Curso_Rmarkdown.Rpres](Curso_Rmarkdown.Rpres)
+- [referencias.bib](referencias.bib)
+- [R.jpg](R.jpg)
+- [Aula_Pratica_Rmarkdown.Rmd](Aula_Pratica_Rmarkdown.Rmd)
+- [Cartao_referencia.pdf](Cartao_referencia.pdf)
+- [Curso_Rmarkdown.Rmd](Curso_Rmarkdown.Rmd)

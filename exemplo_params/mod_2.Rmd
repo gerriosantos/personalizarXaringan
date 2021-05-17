@@ -1,0 +1,116 @@
+---
+title: "Dados do ISS (2019-2020)"
+subtitle: "Secretaria de Palnejamento do Estado do Ceará - Seplag"
+author: ""
+#date: !r Sys.Date() 
+encoding: "UTF-8"
+output:
+   xaringan::moon_reader:
+    #seal: false
+    lib_dir: libs
+    #chakra: libs/remark-latest.min.js
+    css: [xaringan-themer.css]
+    nature:
+      #slideNumberFormat: ""
+      #titleSlideClass: [right, medium, inverse]
+      #countdown: 60000  # coloca o tempo -- que fica vermelho quando termina
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+
+---
+
+````{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+
+```
+
+
+
+```{r xaringan-themer, include=FALSE, warning=FALSE, fig.width = 4.5, fig.height = 3, dpi=300}
+
+library(xaringanthemer)
+
+style_xaringan(
+  text_color = '#000',
+  header_color = 'white',
+  background_image = 'bk_image1.png',
+  #header_background_color = 'blue',
+  text_slide_number_font_size = NULL,
+  #padding = '1em', '4em', '1em', '4em',
+  #title_slide_background_color = color_principal,
+  
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Fira Mono")
+)
+
+```
+
+```{r}
+library(tidyverse)
+
+```
+
+
+```{r, echo=FALSE}
+
+dados <- haven::read_dta('../data-raw/DadosISS_bimestral.dta') %>%
+  mutate(Bimestre = case_when(
+    Bimestre == 1 ~ '1˚ Bim',
+    Bimestre == 2 ~ '2˚ Bim',
+    Bimestre == 3 ~ '3˚ Bim',
+    Bimestre == 4 ~ '4˚ Bim',
+    Bimestre == 5 ~ '5˚ Bim',
+    Bimestre == 6 ~ '6˚ Bim'
+  ),
+  iss19 = round(ISS19/pop19, 2),
+  iss20 = round(ISS20/pop19, 2),
+  Municipio = base::paste(substring(Municipio, 4), substr(Municipio,1,2), sep = '-')) %>%
+  select(Municipio, Bimestre, 'ISS por Habitante 2019' = iss19, 'ISS por Habitante 2020' = iss20) %>%
+  pivot_longer(cols = !Municipio:Bimestre, names_to = 'iss', values_to = 'iss_pop') %>%
+  filter(Municipio %in% c('Coreaú-CE', 'Sobral-CE'))
+
+
+```
+
+
+---
+
+background-image: url(template_todos_slides.png)
+background-size: cover
+
+# `r dplyr::first(dados$Municipio)`
+
+
+```{r, echo=FALSE, fig.width=18, fig.height = 12, dpi=300}
+
+dados %>%
+  ggplot(aes(x = Bimestre, y = iss_pop, fill = iss)) +
+  geom_bar(stat = 'identity', position = position_dodge(),
+           color = 'white')+
+  theme_minimal()+
+  #coord_flip()+
+  scale_y_continuous(n.breaks = 5)+
+  scale_fill_manual(values = c('#58D68D', '#58D68D'))+
+  theme(#axis.text.x = element_text(color = 'black'),
+    #axis.text.y = element_text(color = 'black'),
+    #panel.grid.major.x = element_line(),
+    # panel.background = element_rect(
+    # fill = 'white',
+    # color = 'lightgray',
+    # size = 0.5),
+    text = element_text(family="Times New Roman", color="black",
+                        size=24, face="bold"),
+    legend.position = 'none', panel.grid = element_line(colour = 'lightgray'))+
+  labs(subtitle = '',
+       x = '', y = '',
+      # caption = 'Observatório do Federalismo Brasileiro (OFB) \n @seplagce',
+       tag = '', fill = '') +
+  facet_wrap(~iss)
+
+```
+
+
