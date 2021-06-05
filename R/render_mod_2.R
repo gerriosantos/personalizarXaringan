@@ -26,6 +26,20 @@ purrr::map(
   )
 )
 
+# Salvar os htmls em pdf (usando pagedown)
+purrr::map(
+  .x = mun,
+  .f = ~ pagedown::chrome_print(
+    input = here::here('exemplo_params', paste0(.x, '.html')),
+    browser = 'C:/Users/gerri/AppData/Local/Google/Chrome/Application/chrome.exe'
+  )
+)
+
+
+
+
+
+
 
 
 

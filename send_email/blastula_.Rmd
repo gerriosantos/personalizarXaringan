@@ -1,0 +1,19 @@
+---
+title: "Teste_Email"
+output: blastula::blastula_email
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r echo = TRUE}
+
+ggplot2::ggplot(mtcars, ggplot2::aes(x = wt, y = mpg))+
+  ggplot2::geom_point()+
+  ggplot2::ggtitle('Grafico')
+
+```
+
+
